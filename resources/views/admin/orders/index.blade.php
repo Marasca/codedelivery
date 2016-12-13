@@ -31,7 +31,7 @@
                         @endforeach
                     </ul>
                 </td>
-                <td>{{ $order->deliveryman->name ?? '--' }}</td>
+                <td>{{ isset($order->deliveryman->name) ? $order->deliveryman->name : '--' }}</td>
                 <td>{{ $statuses[$order->status] }}</td>
                 <td>
                     <a href="{{ route('admin.orders.edit', ['id' => $order->id]) }}" class="btn btn-default btn-xs">Editar</a>
