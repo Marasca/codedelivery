@@ -16,6 +16,7 @@ class Order extends Model implements Transformable
         'user_deliveryman_id',
         'total',
         'status',
+        'coupon_id',
     ];
 
     public function items()
@@ -32,10 +33,20 @@ class Order extends Model implements Transformable
     {
         return $this->belongsTo(Client::class);
     }
+    
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class);
+    }
 
     public function getFormattedTotalAttribute()
     {
         return $this->attributes['total'] = number_format($this->attributes['total'], 2, ',', '.');
+    }
+    
+    public function getFormattedStatusAttribute()
+    {
+        return config('orders.statuses.'.$this->attributes['status']);
     }
 
     public function getFormattedCreatedAtAttribute()

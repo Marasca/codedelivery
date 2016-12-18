@@ -7,3 +7,7 @@ Agora que você já possui uma base para trabalharmos em nossa área administrat
 
 - Crie uma administração de Clientes (CRUD)
 - Crie uma área de gerenciamento de pedidos (Listagem dos pedidos (e itens), edição de status e atribuição do entregador)
+
+## Fase 2 - Checkout
+
+Nessa fase, você deverá completar toda a área administrativa, bem como o checkout de um pedido, da mesma forma como foi apresentada no curso.

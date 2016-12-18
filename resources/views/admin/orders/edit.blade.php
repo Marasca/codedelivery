@@ -5,6 +5,9 @@
 
     <h4>Cliente: {{ $order->client->user->name }}</h4>
     <h4>Data: {{ $order->formatted_created_at }}</h4>
+    @if(isset($order->coupon->code))
+        <h4>Cupom: {{ $order->coupon->code }}</h4>
+    @endif
 
     <hr>
 

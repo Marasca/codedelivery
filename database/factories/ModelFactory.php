@@ -59,3 +59,10 @@ $factory->define(CodeDelivery\Models\OrderItem::class, function (Faker\Generator
         'qtd' => 2,
     ];
 });
+
+$factory->define(CodeDelivery\Models\Coupon::class, function (Faker\Generator $faker) {
+    return [
+        'code' => rand(1000, 10000),
+        'value' => rand(50, 100),
+    ];
+});
