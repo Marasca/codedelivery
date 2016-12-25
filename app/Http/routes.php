@@ -70,15 +70,14 @@ Route::post('oauth/access_token', function () {
 });
 
 Route::group(['prefix' => 'api', 'middleware' => 'oauth', 'as' => 'api.'], function () {
-    Route::get('/pedidos', function () {
-        return [
-            'id' => 1,
-            'client' => 'Luiz Carlos',
-            'total' => 10,
-        ];
+    Route::get('/authenticated', ['as' => 'authenticated', 'uses' => 'Api\UserController@authenticated']);
+
+    Route::group(['prefix' => 'client', 'middleware' => 'oauth.check-role:client', 'as' => 'client.'], function () {
+        Route::resource('order', 'Api\Client\ClientCheckoutController', ['except' => ['create', 'edit', 'destroy']]);
     });
 
-    Route::get('/teste', function (\CodeDelivery\Repositories\ClientRepository $clientRepository) {
-        return $clientRepository->all();
+    Route::group(['prefix' => 'deliveryman', 'middleware' => 'oauth.check-role:deliveryman', 'as' => 'deliveryman.'], function () {
+        Route::resource('order', 'Api\Deliveryman\DeliverymanCheckoutController', ['except' => ['create', 'store', 'edit', 'destroy']]);
+        Route::patch('/order/{id}/update-status', ['as' => 'update-status', 'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus']);
     });
 });

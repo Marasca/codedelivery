@@ -3,6 +3,7 @@
 namespace CodeDelivery\Services;
 
 
+use CodeDelivery\Models\Order;
 use CodeDelivery\Repositories\CouponRepository;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\ProductRepository;
@@ -68,9 +69,25 @@ class OrderService
             $order->save();
 
             \DB::commit();
+
+            return $order;
         } catch (\Exception $e) {
             \DB::rollback();
             throw $e;
         }
+    }
+
+    public function updateStatus($id, $deliverymanId, $status)
+    {
+        $order = $this->orderRepository->getByIdAndDeliveryman($id, $deliverymanId);
+
+        if ($order instanceof Order) {
+            $order->status = $status;
+            $order->save();
+
+            return $order;
+        }
+
+        return false;
     }
 }

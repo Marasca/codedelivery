@@ -21,3 +21,11 @@ Crie também um seeder com nome OAuthClientSeeder. Este seeder deve criar um reg
 * secret: secret
 * app: Minha App Mobile
 * created_at e updated_at com a data atual.
+
+## Fase 4 - Criando API de Client
+
+Agora que já criamos a API que o client usará no aplicativo mobile, você deve reproduzir o mesmo e ainda criar um endpoint com a rota api/authenticated que retornará os dados do usuário autenticado.
+
+Para não mostrar o password na serialização, use na entidade User:
+
+protected $hidden = ['password'];
