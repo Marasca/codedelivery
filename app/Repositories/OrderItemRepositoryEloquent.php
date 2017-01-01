@@ -14,6 +14,8 @@ use CodeDelivery\Validators\OrderItemValidator;
  */
 class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRepository
 {
+    protected $skipPresenter = true;
+    
     /**
      * Specify Model class name
      *
@@ -32,5 +34,10 @@ class OrderItemRepositoryEloquent extends BaseRepository implements OrderItemRep
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+    
+    public function presenter()
+    {
+        return \CodeDelivery\Presenters\OrderItemPresenter::class;
     }
 }

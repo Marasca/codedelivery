@@ -14,6 +14,8 @@ use CodeDelivery\Validators\CouponValidator;
  */
 class CouponRepositoryEloquent extends BaseRepository implements CouponRepository
 {
+    protected $skipPresenter = true;
+    
     /**
      * Specify Model class name
      *
@@ -32,5 +34,10 @@ class CouponRepositoryEloquent extends BaseRepository implements CouponRepositor
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+    
+    public function presenter()
+    {
+        return \CodeDelivery\Presenters\CouponPresenter::class;
     }
 }
