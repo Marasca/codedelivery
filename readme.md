@@ -55,4 +55,5 @@ O relacionamento com product deve ser atribuído com "defaultIncludes" e deve re
 * id, name, email e role
 
 Atribua o UserTransformer ao UserRepositoryEloquent
+
 Faça a validação que fizemos para o cadastro de Order
