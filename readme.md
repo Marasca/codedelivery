@@ -57,3 +57,7 @@ O relacionamento com product deve ser atribuído com "defaultIncludes" e deve re
 Atribua o UserTransformer ao UserRepositoryEloquent
 
 Faça a validação que fizemos para o cadastro de Order
+
+## Fase 6 - Autenticação com Ionic
+
+Nesta fase, você deverá criar a autenticação e configuração do CORS igualmente fizemos no capítulo e também deverá criar no HomeCtrl uma estrutura para buscar e mostrar o nome do usuário autenticado no content.

@@ -1,0 +1,18 @@
+angular.module('starter.controllers')
+    .controller('LoginCtrl', ['$scope', 'OAuth', '$ionicPopup', '$state', function ($scope, OAuth, $ionicPopup, $state) {
+        $scope.user = {
+            username: '',
+            password: ''
+        };
+
+        $scope.login = function () {
+            OAuth.getAccessToken($scope.user).then(function () {
+                $state.go('home');
+            }, function () {
+                $ionicPopup.alert({
+                    title: 'Advertência',
+                    template: 'Usuário e/ou senha inválido(s)'
+                });
+            });
+        };
+    }]);

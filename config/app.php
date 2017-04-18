@@ -154,6 +154,8 @@ return [
         
         CodeDelivery\Providers\RepositoryServiceProvider::class,
 
+        Barryvdh\Cors\ServiceProvider::class,
+
     ],
 
     /*
